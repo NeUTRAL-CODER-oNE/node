@@ -14,11 +14,17 @@ async function readFileContent(filePath) {
         console.error(`Error reading file: ${error.code} - ${error.message}`);
     }
 }
-readFileContent('test-files/file1.txt');
-// Expected Output: Content of file1.txt
 
-readFileContent('test-files/empty-file.txt');
-// Expected Output: (empty string)
+(async () => {
+    console.log('Test Case 1:');
+    await readFileContent('test-files/file1.txt');
+    // Expected Output: Content of file1.txt
 
-readFileContent('test-files/nonexistent-file.txt');
-// Expected Output: Error reading file: ENOENT: no such file or directory...
+    console.log('\nTest Case 2:');
+    await readFileContent('test-files/empty-file.txt');
+    // Expected Output: (empty string)
+
+    console.log('\nTest Case 3:');
+    await readFileContent('test-files/nonexistent-file.txt');
+    // Expected Output: Error reading file: ENOENT: no such file or directory...
+})();
